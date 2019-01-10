@@ -1,86 +1,72 @@
 def full_pyramide(depl)
-	etage=10
-	x=[]
-#compteur de boucles
-i=1
-#nombre d'espace
-space= " "
-#incrementation de espace
-î=etage
-a=1
-position=depl
-while (i<=etage) do
-	if i==position
- x <<  ((space * (î-1))+("P")+("#" * a ))
-else
-	x <<  ((space * (î))+("#" * a ))
-end
-	i+=1
-	î-=1
-	a+=2
-end
-puts x
+	etage = 10	
+	x = []
+	#compteur de boucles
+	i = 1
+	#incrementation de espace
+	spc = etage
+	a = 1
+	position = depl
+	while i <= etage	
+		if i == position 
+			x << ((' ' * (spc-1))+("P")+("#" * a ))
+		else	
+			x << ((' ' * (spc))+("#" * a ))
+		end	
+		i += 1	
+		spc -= 1	
+		a += 2
+	end
+	puts x
 end	
-def lancer
-    puts "Lancer le de ? ( y / n )"
-    rep=gets.chomp
 
+def lancer 
+	de = rand(1..6) 
+end 
 
-    if rep == 'y'
-    de=1+rand(6)
-    
-    end
-    return de    
+def action	
+	depl = 10	
+	while depl > 0 
+	puts "Lancer le dé ? (Tap any key) (Q) Quitter"
+	print "> " 
+	rep = gets.chomp.upcase
+		de = lancer
+		break if rep == 'Q'
+		puts de
+		if de == 5 || de == 6
+			depl -= 1 
+			puts full_pyramide(depl) 
+			puts "Vous avez avancé d'une marche"  
+		elsif de == 1 
+			if depl < 10 	
+				depl+=1 
+				puts full_pyramide(depl) 
+				puts"Vous etes descendu d'une marche" 
+			else
+		 		full_pyramide(depl) 
+			end 
+		elsif de == 2 || de == 3 || de == 4	 	
+			full_pyramide(depl) 	
+			puts "Vous n'avez pas bougé"
+		end
+		puts "Vous vous trouvez sur la position #{10 - depl}"
+	end
+	if depl == 0	
+		puts "-------------------"	
+		puts " Vous-avez gagné!!"	
+		puts "-------------------"
+	end
 end
-            
 
-
-def action
-	depl=10
-	while depl>0
-
-    de=lancer
-
-
-   if de==5
-        depl-=1
-        puts de
-        full_pyramide(depl)
-        puts "avance d'une marche"
-
-    elsif de==6
-        depl-=1
-        puts de
-        full_pyramide(depl)
-        puts "vous etes monte d'une marche"
-
-    elsif de==1
-        if depl<10
-        	depl+=1
-        puts de
-        full_pyramide(depl)
-        puts"Vous etes descendu d'une marche"
-    else
-    	full_pyramide(depl)
-        end
-    elsif de==2
-    	puts de
-    	full_pyramide(depl)
-    	puts "rien ne se passe"
-    elsif de==3
-    	puts de
-    	full_pyramide(depl)
-    	puts "rien ne se passe"
-    elsif de==4  
-    puts de 
-    full_pyramide(depl)
-    puts "rien ne se passe"
-end
-end
-if depl==0
-	puts "-------------------"
-	puts " vous-avez gagne!!"
-	puts "-------------------"
-end
-end
-action
+puts " 1. Afficher une pyramide \n 2. Lancer un dé \n 3. Jouer"
+print "> "
+choix = gets.chomp.to_i
+if choix == 1
+	full_pyramide
+elsif choix == 2
+	lancer
+elsif choix == 3
+	action
+else
+	puts "Veuillez choisir l'un de ces chiffres!"	
+endn
