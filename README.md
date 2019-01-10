@@ -16,4 +16,4 @@ demande le nombre de ligne de la pyramide et l'affiche en mode full_pyramide jus
 ## Le 02_password.rb
 stocke le mot de passe tape par l'utilisateur dans une variable, lui demande d'entrer son mot de passe et lui affiche un ecran d'accueil dans le cas ou le mot de passe tape correspond a celui sauvegarde
 ## Le 03_stairway
-esty en cours de finalisation, je vous prie de bien vouloir patienter un tout petit instant
+est un petit jeu a toi de le decouvrir!
