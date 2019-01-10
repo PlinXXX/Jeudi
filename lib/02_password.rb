@@ -1,9 +1,10 @@
-
+ require "io/console"
 	#Sign up
 	def sign_up
 		puts "Inittialisez et retenez bien votre mot de passe:"
 		print "> "
-		realmdp = gets.chomp
+		realmdp = STDIN.noecho(&:gets).chomp
+		system "clear"
 		puts "PASSWORD SAVED!\n\n"
 		return realmdp
 	end
@@ -14,7 +15,9 @@
 			realmdp = sign_up
 		while mdp != realmdp
 			puts "ENTER YOUR PASSWORD:"
-			mdp = gets.chomp.to_s
+			print "> "
+			mdp = STDIN.noecho(&:gets).chomp
+			system "clear"
 			puts "PASSWORD DENIED!" if mdp != realmdp
 		end
 		puts "PASSWORD ACCEPTED!\n\n"

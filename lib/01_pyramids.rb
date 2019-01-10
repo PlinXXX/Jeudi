@@ -27,11 +27,14 @@ def wtf_pyramide
 	puts "Salut, bienvenue dans ma super pyramide ! Combien d'étages veux-tu ?"
 	print ">"
 	etage = gets.chomp.to_i
-	if !etage.even?
+	while etage.even?
+		puts "Pas de nombre paire s'il vous plait!"
+		print "> "
+		etage = gets.chomp.to_i
+	end
 	puts "Voici la pyramide :"
 	for c in 1..etage #c varie de 1-->etage
-		if c > (etage/2) #quand on arrive avant le milieu on arrete 
-			dep=c 
+		if c > (etage/2) #quand on arrive avant le milieu on arrete  
 			break
 		end
 		j = 2*c-1 #pour que la pyramide soit symetrique il faut que les "#" soient impaire 
@@ -39,7 +42,7 @@ def wtf_pyramide
 		espace = ' '*(etage-c) #repete les espaces "etage-c" fois
 		puts  "#{espace}#{diez}" #affiche les espaces et les "#" 
 	end
-	d = dep #On reprend la pyramide a partir du milieu
+	d = (etage/2)+1 #On reprend la pyramide a partir du milieu
 	while d > 0 #tant que d est superieur ou egal a 1
 		j = 2*d - 1
 		diez = '#'*j
@@ -47,10 +50,6 @@ def wtf_pyramide
 		puts "#{espace}#{diez}"
 		d -= 1 #decrementation de d
 	end
-	else
-		puts "Pas de nombre paire s'il vous plait!"
-	end
-
 end
 
 #Ceci est un petit plus de ma part.
@@ -64,5 +63,3 @@ elsif choix == 3
 	wtf_pyramide 
 else puts "Erreur, veuillez choisir un de ces chiffres!"
 end
-
-
