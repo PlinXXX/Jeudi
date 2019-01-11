@@ -21,7 +21,8 @@ def full_pyramide(depl)
 end	
 
 def lancer 
-	de = rand(1..6) 
+	de = rand(1..6)
+	puts de
 end 
 
 def action	
